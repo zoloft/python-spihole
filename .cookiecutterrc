@@ -65,6 +65,6 @@ default_context:
     travis:                    'yes'
     travis_osx:                'no'
     version:                   '0.0.0'
-    website:                   'https://github.com/zoloft/spihole'
+    website:                   'https://github.com/zoloft'
     year_from:                 '2021'
     year_to:                   '2021'

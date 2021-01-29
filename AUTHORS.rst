@@ -2,4 +2,4 @@
 Authors
 =======
 
-* zoloft - https://github.com/zoloft/spihole
+* zoloft - https://github.com/zoloft
