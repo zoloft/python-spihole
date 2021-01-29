@@ -1,1 +1,3 @@
-__version__ = '0.0.0'
+from spihole._version import version
+
+__version__ = version
