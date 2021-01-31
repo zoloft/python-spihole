@@ -2,6 +2,12 @@
 Changelog
 =========
 
+0.0.1 (2021-01-29)
+------------------
+
+* Modernized setup.py
+* Fixed automatic build
+
 0.0.0 (2021-01-28)
 ------------------
 
