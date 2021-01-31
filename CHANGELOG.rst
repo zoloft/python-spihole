@@ -2,6 +2,12 @@
 Changelog
 =========
 
+0.0.2 (TBD)
+------------------
+
+* Connected appveyor
+* Added automatic pypi upload via travis
+
 0.0.1 (2021-01-29)
 ------------------
 
