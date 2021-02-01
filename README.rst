@@ -51,9 +51,9 @@ Overview
     :alt: Supported implementations
     :target: https://pypi.org/project/spihole
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/zoloft/python-spihole/v0.0.1.svg
+.. |commits-since| image:: https://img.shields.io/github/commits-since/zoloft/python-spihole/v0.0.2.svg
     :alt: Commits since latest release
-    :target: https://github.com/zoloft/python-spihole/compare/v0.0.1...master
+    :target: https://github.com/zoloft/python-spihole/compare/v0.0.2...master
 
 
 

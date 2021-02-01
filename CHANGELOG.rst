@@ -2,7 +2,7 @@
 Changelog
 =========
 
-__new_version__ (TBD)
+0.0.2 (01.02.2021)
 ---------------------
 
 * Connected appveyor
