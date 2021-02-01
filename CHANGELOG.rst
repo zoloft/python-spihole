@@ -3,7 +3,7 @@ Changelog
 =========
 
 __new_version__ (TBD)
-------------------
+---------------------
 
 * Connected appveyor
 * Added automatic pypi upload via travis
