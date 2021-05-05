@@ -20,13 +20,13 @@ class Capture(threading.Thread):
     def run(self) -> None:
         self.camera.resolution = (1920, 1080)
         self.camera.framerate = 30
+        self.camera.rotation = 90
         time.sleep(2)  # camera initialization
         stream = io.BytesIO()
         for _ in self.camera.capture_continuous(stream, 'jpeg', use_video_port=True):
             try:
                 stream.seek(0)
                 self._data_queue.put_nowait(stream.read())
-                print("==== TELL: %d", stream.tell())
             except Exception:
                 pass
             finally:
@@ -35,6 +35,7 @@ class Capture(threading.Thread):
             if self._stop_evt.is_set():
                 break
         self.camera.close()
+        self._stop_evt.clear()
 
     def stop(self) -> None:
         self._stop_evt.set()

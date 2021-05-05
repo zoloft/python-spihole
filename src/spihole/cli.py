@@ -14,7 +14,9 @@ Why does this file exist, and why not put this in __main__?
 
   Also see (1) from http://click.pocoo.org/5/setuptools/#setuptools-integration
 """
+import logging
 import os
+import sys
 import threading
 
 import click
@@ -28,15 +30,22 @@ from .hub import Hub
 @click.option("-c", "--configuration", type=click.Path(readable=True),
               default=os.path.join(os.path.sep, 'etc', 'spihole.conf'))
 def main(configuration):
-    click.echo(click.format_filename(configuration))
+    # configuration_file = click.format_filename(configuration)
+    logging.basicConfig(stream=sys.stderr, level=logging.WARNING,
+                        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
     hub = Hub()
+
     capture = Capture(hub.bus)
     display = Display()
-    hub.add_subscriber(display)
 
     startables = [hub, display, capture]
-    map(lambda x: x.start(), startables)
+    for startable in startables:
+        startable.start()
 
     stop_evt = threading.Event()
+    logging.debug('Started threads')
     while not stop_evt.is_set():
         stop_evt.wait(30)  # interruptible idle
+    for startable in startables:
+        startable.stop()
