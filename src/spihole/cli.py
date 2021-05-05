@@ -14,10 +14,29 @@ Why does this file exist, and why not put this in __main__?
 
   Also see (1) from http://click.pocoo.org/5/setuptools/#setuptools-integration
 """
+import os
+import threading
+
 import click
 
+from .capture import Capture
+from .display import Display
+from .hub import Hub
 
-@click.command()
-@click.argument('names', nargs=-1)
-def main(names):
-    click.echo(repr(names))
+
+@click.command(name='run')
+@click.option("-c", "--configuration", type=click.Path(readable=True),
+              default=os.path.join(os.path.sep, 'etc', 'spihole.conf'))
+def main(configuration):
+    click.echo(click.format_filename(configuration))
+    hub = Hub()
+    capture = Capture(hub.bus)
+    display = Display()
+    hub.add_subscriber(display)
+
+    startables = [hub, display, capture]
+    map(lambda x: x.start(), startables)
+
+    stop_evt = threading.Event()
+    while not stop_evt.is_set():
+        stop_evt.wait(30)  # interruptible idle
