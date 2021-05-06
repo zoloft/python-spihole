@@ -26,7 +26,7 @@ from .display import Display
 from .hub import Hub
 
 
-@click.command(name='run')
+@click.command()
 @click.option("-c", "--configuration", type=click.Path(readable=True),
               default=os.path.join(os.path.sep, 'etc', 'spihole.conf'))
 def main(configuration):

@@ -32,7 +32,7 @@ except ImportError:
 try:
     import RPi.GPIO as GPIO
 except ImportError:
-    import fake_rpi.RPi.GPIO as GPIO
+    from fake_rpi.RPi import GPIO
 
 import time
 
