@@ -4,20 +4,26 @@ except ImportError:
     import fake_rpi.picamera as picamera
 
 import io
-import queue
 import threading
 import time
 
+from .hub import Hub
+from .hub import HubMessage
+from .hub import HubMessageType
+
 
 class Capture(threading.Thread):
-    def __init__(self, data_queue: queue.Queue) -> None:
+    def __init__(self, hub: Hub) -> None:
         super().__init__()
         self.daemon = True
-        self.camera = picamera.PiCamera()
+        self.camera: picamera.PiCamera
         self._stop_evt = threading.Event()
-        self._data_queue = data_queue
+        self._data_queue = hub.bus
+        hub.add_subscriber(self)
+        self._message = HubMessage(HubMessageType.DATA, bytes())
 
     def run(self) -> None:
+        self.camera = picamera.PiCamera()
         self.camera.resolution = (1920, 1080)
         self.camera.framerate = 30
         self.camera.rotation = 90
@@ -26,7 +32,8 @@ class Capture(threading.Thread):
         for _ in self.camera.capture_continuous(stream, 'jpeg', use_video_port=True):
             try:
                 stream.seek(0)
-                self._data_queue.put_nowait(stream.read())
+                self._message.content = stream.read()
+                self._data_queue.put_nowait(self._message)
             except Exception:
                 pass
             finally:
@@ -39,3 +46,7 @@ class Capture(threading.Thread):
 
     def stop(self) -> None:
         self._stop_evt.set()
+
+    def on_message(self, message: HubMessage):
+        if message.type == HubMessageType.EVENT:
+            pass

@@ -1,12 +1,26 @@
+import enum
 import queue
 import threading
 from abc import ABCMeta
+from typing import Any
 
 
 class HubSubscriber(metaclass=ABCMeta):
     @classmethod
     def __subclasshook__(cls, subclass):
-        return hasattr(subclass, 'on_data') and callable(subclass.on_data) or NotImplemented
+        return hasattr(subclass, 'on_message') and callable(subclass.on_message) or NotImplemented
+
+
+class HubMessageType(enum.Enum):
+    DATA = 1
+    EVENT = 2
+
+
+class HubMessage():
+    def __init__(self, msg_type: HubMessageType, content: Any) -> None:
+        super().__init__()
+        self.type: HubMessageType = msg_type
+        self.content: Any = content
 
 
 class Hub(threading.Thread):
@@ -28,14 +42,15 @@ class Hub(threading.Thread):
                 self._distribute(data)
             except queue.Empty:
                 pass
+        self._stop_evt.clear()
 
     def stop(self) -> None:
         self._stop_evt.set()
 
-    def _distribute(self, data: bytes) -> None:
+    def _distribute(self, message: HubMessage) -> None:
         subscriber: HubSubscriber
         for subscriber in self._subscribers:
-            subscriber.on_data(data)
+            subscriber.on_message(message)
 
     @property
     def bus(self):
