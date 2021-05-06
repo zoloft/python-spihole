@@ -1,7 +1,6 @@
 language: python
 dist: focal
 virt: lxd
-arch: arm64
 cache: false
 env:
   global:
