@@ -1,5 +1,6 @@
 language: python
 dist: focal
+arch: arm64
 virt: lxd
 cache: false
 env:
@@ -9,15 +10,6 @@ env:
     - LANG=en_US.UTF-8
 matrix:
   include:
-    - python: '3.6'
-      env:
-        - TOXENV=check
-    - python: '3.6'
-      env:
-        - TOXENV=docs
-    - env:
-        - TOXENV=py36,codecov
-      python: '3.6'
     - env:
         - TOXENV=py37,codecov
       python: '3.7'
