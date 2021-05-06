@@ -1,10 +1,10 @@
 
-from click.testing import CliRunner
+# from click.testing import CliRunner
 
-from spihole.cli import main
+# from spihole.cli import main
 
 
-def test_main():
-    runner = CliRunner()
-    result = runner.invoke(main, [])
-    assert result.exit_code == 0
+# def test_main():
+#     runner = CliRunner()
+#     result = runner.invoke(main, [])
+#     assert result.exit_code == 0
