@@ -46,6 +46,7 @@ class Capture(threading.Thread):
 
     def stop(self) -> None:
         self._stop_evt.set()
+        self.join()
 
     def on_message(self, message: HubMessage):
         if message.type == HubMessageType.EVENT:

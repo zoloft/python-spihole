@@ -48,6 +48,7 @@ class Display(threading.Thread):
 
     def stop(self):
         self._stop_evt.set()
+        self.join()
 
     def _display(self, data: bytes):
         image = Image.open(io.BytesIO(data))

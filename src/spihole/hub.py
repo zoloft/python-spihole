@@ -46,6 +46,7 @@ class Hub(threading.Thread):
 
     def stop(self) -> None:
         self._stop_evt.set()
+        self.join()
 
     def _distribute(self, message: HubMessage) -> None:
         subscriber: HubSubscriber
