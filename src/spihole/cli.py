@@ -26,6 +26,7 @@ import click
 from .capture import Capture
 from .display import Display
 from .hub import Hub
+from .keypad import KeyPad
 
 
 def signal_handler(stop_event: threading.Event, received_signal, _frame):
@@ -44,14 +45,15 @@ def install_handlers(stop_event: threading.Event):
               default=os.path.join(os.path.sep, 'etc', 'spihole.conf'))
 def main(configuration):
     # configuration_file = click.format_filename(configuration)
-    logging.basicConfig(stream=sys.stderr, level=logging.WARNING,
+    logging.basicConfig(stream=sys.stderr, level=logging.DEBUG,
                         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
     hub = Hub()
     capture = Capture(hub)
     display = Display(hub)
+    keypad = KeyPad(hub)
 
-    startables = [hub, display, capture]
+    startables = [hub, display, capture, keypad]
     for startable in startables:
         startable.start()
 
@@ -65,3 +67,6 @@ def main(configuration):
     logging.debug('Main loop completed, closing threads')
     for startable in startables:
         startable.stop()
+
+    for startable in startables:
+        startable.join()
