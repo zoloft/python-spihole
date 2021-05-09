@@ -83,5 +83,5 @@ class Capture(threading.Thread):
 
     def _reset(self):
         self._zoom_factor = 0
-        self._zoom(-self._zoom_factor)
+        self.camera.zoom = (0, 0, 1, 1)
         self.camera.rotation = 0
