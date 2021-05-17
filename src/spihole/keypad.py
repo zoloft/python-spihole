@@ -54,4 +54,3 @@ class KeyPad(threading.Thread):
     def _cleanup(self):
         for key in KeyTypes:
             GPIO.remove_event_detect(key)
-        GPIO.cleanup()
