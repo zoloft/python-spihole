@@ -153,14 +153,15 @@ jobs:
       if: runner.os == 'Windows'
       with:
         update: true
-        install: zlib
+        install: >-
+          zlib-devel
+          zlib
     - uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python }}
         architecture: ${{ matrix.python_arch }}
     - name: install dependencies
       run: |
-        python -mpip install -U --force-reinstall pip
         python -mpip install -U --progress-bar=off -r ci/requirements.txt
         virtualenv --version
         pip --version
@@ -169,6 +170,5 @@ jobs:
     - name: test
       env:
         TOXPYTHON: '${{ matrix.toxpython }}'
-      run: |
-        python -mpip install -U --force-reinstall pip
+      run: >
         tox -e ${{ matrix.tox_env }} -v
