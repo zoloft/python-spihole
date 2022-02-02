@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import traceback
+
 import sphinx_py3doc_enhanced_theme
 
 extensions = [
