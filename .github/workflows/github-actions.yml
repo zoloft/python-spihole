@@ -169,5 +169,6 @@ jobs:
     - name: test
       env:
         TOXPYTHON: '${{ matrix.toxpython }}'
-      run: >
+      run: |
+        python -mpip install -U --force-reinstall pip
         tox -e ${{ matrix.tox_env }} -v
