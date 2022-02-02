@@ -10,13 +10,13 @@ Overview
     * - docs
       - |docs|
     * - tests
-      - | |travis| |appveyor| |requires|
+      - | |github-actions| |travis| |appveyor| |requires|
         | |codecov|
     * - package
       - | |version| |wheel| |supported-versions| |supported-implementations|
         | |commits-since|
 .. |docs| image:: https://readthedocs.org/projects/python-spihole/badge/?style=flat
-    :target: https://readthedocs.org/projects/python-spihole
+    :target: https://python-spihole.readthedocs.io/
     :alt: Documentation Status
 
 .. |travis| image:: https://api.travis-ci.com/zoloft/python-spihole.svg?branch=master
@@ -26,6 +26,10 @@ Overview
 .. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/zoloft/python-spihole?branch=master&svg=true
     :alt: AppVeyor Build Status
     :target: https://ci.appveyor.com/project/zoloft/python-spihole
+
+.. |github-actions| image:: https://github.com/zoloft/python-spihole/actions/workflows/github-actions.yml/badge.svg
+    :alt: GitHub Actions Build Status
+    :target: https://github.com/zoloft/python-spihole/actions
 
 .. |requires| image:: https://requires.io/github/zoloft/python-spihole/requirements.svg?branch=master
     :alt: Requirements Status
