@@ -50,7 +50,7 @@ environment:
       PYTHON_ARCH: '64'
     - TOXENV: py310,codecov
       TOXPYTHON: C:\Python310\python.exe
-      PYTHON_HOME: "C:\Python310"
+      PYTHON_HOME: 'C:\Python310'
       PYTHON_VERSION: '3.10'
       PYTHON_ARCH: '32'
     - TOXENV: py310,codecov
