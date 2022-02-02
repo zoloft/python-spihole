@@ -29,15 +29,11 @@ matrix:
       python: '3.9'
     - env:
         - TOXENV=py310,codecov
-      python: '3.1'
+      python: '3.10.1'
     - env:
         - TOXENV=pypy37,codecov
         - TOXPYTHON=pypy3
-      python: 'pypy3'
-    - env:
-        - TOXENV=pypy38,codecov
-        - TOXPYTHON=pypy3
-      python: 'pypy3'
+      python: 'pypy3.7-7.3.5'
 before_install:
   - python --version
   - uname -a
