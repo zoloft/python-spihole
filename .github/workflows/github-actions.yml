@@ -150,6 +150,7 @@ jobs:
       with:
         fetch-depth: 0
     - uses: msys2/setup-msys2@v2
+      if: runner.os == 'Windows'
       with:
         update: true
         install: zlib
