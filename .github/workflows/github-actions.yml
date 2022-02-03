@@ -19,6 +19,11 @@ jobs:
             toxpython: 'python3.9'
             tox_env: 'docs'
             os: 'ubuntu-latest'
+          - name: 'report'
+            python: '3.9'
+            toxpython: 'python3.9'
+            tox_env: 'report'
+            os: 'ubuntu-latest'
           - name: 'py36 (ubuntu)'
             python: '3.6'
             toxpython: 'python3.6'
@@ -166,6 +171,7 @@ jobs:
         TOXPYTHON: '${{ matrix.toxpython }}'
       run: >
         tox -e ${{ matrix.tox_env }} -v
+        tox 
     - name: Coveralls
       uses: coverallsapp/github-action@master
       if: hashFiles('coverage/lcov.info') != ''
