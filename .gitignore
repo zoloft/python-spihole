@@ -12,6 +12,8 @@
 
 # End of https://www.toptal.com/developers/gitignore/api/vscode
 
+coverage
+
 *.py[cod]
 __pycache__
 
