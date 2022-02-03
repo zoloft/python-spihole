@@ -168,5 +168,6 @@ jobs:
         tox -e ${{ matrix.tox_env }} -v
     - name: Coveralls
       uses: coverallsapp/github-action@master
+      if: hashFiles('coverage/lcov.info') != ''
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
