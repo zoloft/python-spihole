@@ -5,7 +5,8 @@ Changelog
 __new_version__ (TBD)
 ---------------------
 
-* TODO: Fill in
+* no functional changes in this release,
+  just in tooling/CI
 
 0.0.2 (01.02.2021)
 ---------------------
