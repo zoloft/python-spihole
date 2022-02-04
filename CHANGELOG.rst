@@ -2,7 +2,7 @@
 Changelog
 =========
 
-__new_version__ (TBD)
+0.0.3 (04.02.2022)
 ---------------------
 
 * no functional changes in this release,
