@@ -37,4 +37,4 @@ jobs:
           prerelease: true
           files: |
             dist/spihole-*.whl
-            dist/spihile-*.tar.gz
+            dist/spihole-*.tar.gz
