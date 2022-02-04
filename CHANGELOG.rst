@@ -2,6 +2,12 @@
 Changelog
 =========
 
+__new_version__ (TBD)
+---------------------
+
+* no functional changes in this release,
+  just in tooling/CI
+
 0.0.3 (04.02.2022)
 ---------------------
 
